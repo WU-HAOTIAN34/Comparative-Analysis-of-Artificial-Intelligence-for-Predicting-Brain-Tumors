@@ -1,43 +1,25 @@
-# Brain-Tumor
+# Comparative Analysis of Artificial Intelligence for Predicting Brain Tumors
 
-## 1.
+## 1. Environment Configeration
 
 ```
-conda create --name nerfstudio -y python=3.8
-conda activate nerfstudio
+conda init
+conda create --name tumor -y python=3.8
+conda activate tumor
 python -m pip install --upgrade pip
 ```
 
 ```
-pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 -f https://download.pytorch.org/whl/torch_stable.html
+pip install opencv-python
+pip install scikit-learn==0.22.2
+pip install keras==2.6.0
+pip install keras-preprocessing==1.1.2
+sudo apt-get update
+pip install matplotlib
+pip install ipykernel
+pip install seaborn
+pip install tensorflow
+pip install tqdm
 ```
 
-```
-python -c 'import torch;print(torch.backends.cudnn.version())'
-python -c 'import torch;print(torch.__version__)'
-```
 
-```
-git clone https://github.com/MIC-DKFZ/nnUNet.git
-cd nnUNet
-pip install -e .
-```
-
-```
-pip install opendatasets
-python
-import opendatasets as od
-od.download("https://www.kaggle.com/datasets/dschettler8845/brats-2021-task1")
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
