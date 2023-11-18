@@ -10,16 +10,15 @@ python -m pip install --upgrade pip
 ```
 
 ```
-pip install opencv-python
-pip install scikit-learn==0.22.2
-pip install keras==2.6.0
-pip install keras-preprocessing==1.1.2
-sudo apt-get update
-pip install matplotlib
-pip install ipykernel
-pip install seaborn
-pip install tensorflow
-pip install tqdm
+sudo apt-get install unzip
+unzip .zip
 ```
 
-
+```
+pip install keras
+pip install scikit-learn
+pip install seaborn
+pip install opencv-python
+pip install tqdm
+conda list tensorflow
+```
