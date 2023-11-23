@@ -20,5 +20,18 @@ pip install scikit-learn
 pip install seaborn
 pip install opencv-python
 pip install tqdm
+pip install tensorflow==2.9.0
+pip install ipykernel
 conda list tensorflow
+```
+
+## 2. Dataset and Preprocessing
+
+```
+pip install hdf5storage
+pip install split-folders
+```
+
+```
+
 ```
