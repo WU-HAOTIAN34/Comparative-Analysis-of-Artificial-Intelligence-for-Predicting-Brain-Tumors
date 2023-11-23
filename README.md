@@ -27,11 +27,11 @@ conda list tensorflow
 
 ## 2. Dataset and Preprocessing
 
-There are four dataset:
-[Br35H](https://www.kaggle.com/datasets/ahmedhamada0/brain-tumor-detection?select=no)
-[SARTAJ's dataset](https://www.kaggle.com/datasets/sartajbhuvaji/brain-tumor-classification-mri)
-A widely used public multiclassification brain tumor dataset ([MBTD](https://figshare.com/articles/dataset/brain_tumor_dataset/1512427)) 
-[Br35H+SARTAJ+figshare](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset)
+There are four dataset:  
+[Br35H](https://www.kaggle.com/datasets/ahmedhamada0/brain-tumor-detection?select=no)  
+[SARTAJ's dataset](https://www.kaggle.com/datasets/sartajbhuvaji/brain-tumor-classification-mri)  
+A widely used public multiclassification brain tumor dataset ([MBTD](https://figshare.com/articles/dataset/brain_tumor_dataset/1512427))   
+[Br35H+SARTAJ+figshare](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset)  
 
 ```
 pip install hdf5storage
