@@ -1,6 +1,4 @@
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix,classification_report
-from sklearn.utils import shuffle
 import matplotlib.pyplot as plt
 import tensorflow as tf
 from tqdm import tqdm
@@ -8,22 +6,17 @@ import numpy as np
 import itertools 
 import cv2
 import os
-import matplotlib.pyplot as plt
-import numpy as np
-import itertools
 
 
-
-def load_data(data_path, label):
+def load_data(data_path, labels, image_size):
 
     x_train = [] # training images.
     y_train  = [] # training labels.
     x_test = [] # testing images.
     y_test = [] # testing labels.
 
-    image_size = 200
 
-    for label in label:
+    for label in labels:
         trainPath = os.path.join(data_path, 'Training',label)
         for file in tqdm(os.listdir(trainPath)):
             image = cv2.imread(os.path.join(trainPath, file),0) # load images in gray.
@@ -31,7 +24,7 @@ def load_data(data_path, label):
             image = cv2.applyColorMap(image, cv2.COLORMAP_BONE) # produce a pseudocolored image.
             image = cv2.resize(image, (image_size, image_size)) # resize images into 150*150.
             x_train.append(image)
-            y_train.append(label.index(label))
+            y_train.append(labels.index(label))
         
         testPath = os.path.join(data_path, 'Testing',label)
         for file in tqdm(os.listdir(testPath)):
@@ -40,7 +33,7 @@ def load_data(data_path, label):
             image = cv2.applyColorMap(image, cv2.COLORMAP_BONE)
             image = cv2.resize(image, (image_size, image_size))
             x_test.append(image)
-            y_test.append(label.index(label))
+            y_test.append(labels.index(label))
 
 
     x_train = np.array(x_train) / 255.0 # normalize Images into range 0 to 1.
@@ -57,17 +50,17 @@ def load_data(data_path, label):
     plt.tight_layout()
     plt.show()
 
-
-    x_train, y_train = shuffle(x_train,y_train, random_state=42) 
-
+    
     y_train = tf.keras.utils.to_categorical(y_train) #One Hot Encoding on the labels
     y_test = tf.keras.utils.to_categorical(y_test)
 
-    x_train, x_val, y_train, y_val = train_test_split(x_train, y_train, test_size=0.2, random_state=42) #Dividing the dataset into Training and Validation sets.
+    print(x_test.shape)
+    print(x_train.shape)
+    print(y_test.shape)
+    print(y_train.shape)
 
-    print(x_val.shape)
 
-    return x_train, x_val, x_test, y_train, y_val, y_test
+    return x_train, x_test, y_train, y_test
 
 
 def plot_confusion_matrix(cm,
@@ -117,23 +110,31 @@ def plot_confusion_matrix(cm,
 
 def draw_curve(history):
 
-    plt.figure(figsize=[8,6])
-    plt.plot(history.history['loss'],'r',linewidth=3.0)
-    plt.plot(history.history['val_loss'],'b',linewidth=3.0)
-    plt.legend(['Training loss', 'Validation Loss'],fontsize=18)
-    plt.xlabel('Epochs ',fontsize=16)
-    plt.ylabel('Loss',fontsize=16)
-    plt.title('Loss Curves',fontsize=16)
-    plt.show()
+    acc = history.history['accuracy']
+    val_acc = history.history['val_accuracy']
+    loss = history.history['loss']
+    val_loss = history.history['val_loss']
+    epochs_range = range(1, len(history.epoch) + 1)
 
-    #Plot the Accuracy Curves
-    plt.figure(figsize=[8,6])
-    plt.plot(history.history['accuracy'],'r',linewidth=3.0)
-    plt.plot(history.history['val_accuracy'],'b',linewidth=3.0)
-    plt.legend(['Training Accuracy', 'Validation Accuracy'],fontsize=18)
-    plt.xlabel('Epochs ',fontsize=16)
-    plt.ylabel('Accuracy',fontsize=16)
-    plt.title('Accuracy Curves',fontsize=16)   
+    plt.figure(figsize=(15,5))
+
+    plt.subplot(1, 2, 1)
+    plt.plot(epochs_range, acc, label='Train Set')
+    plt.plot(epochs_range, val_acc, label='Val Set')
+    plt.legend(loc="best")
+    plt.xlabel('Epochs')
+    plt.ylabel('Accuracy')
+    plt.title('Model Accuracy')
+
+    plt.subplot(1, 2, 2)
+    plt.plot(epochs_range, loss, label='Train Set')
+    plt.plot(epochs_range, val_loss, label='Val Set')
+    plt.legend(loc="best")
+    plt.xlabel('Epochs')
+    plt.ylabel('Loss')
+    plt.title('Model Loss')
+
+    plt.tight_layout()
     plt.show()
 
 
