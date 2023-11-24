@@ -39,6 +39,12 @@ pip install split-folders
 pip install imutils
 ```
 
+Delete all pred0.jpg file in Br35H+SARTAJ+figshare, SARTAJ_dataset and MBTD.
+
+```
+find /path/to/directory -name 'rew.png' -type f -delete
+```
+
 To use the dataset:
 1. Split training set and testing set by Split_folders.ipynb
 2. Crop brain tumor by Crop_Brain_Contours.ipynb
