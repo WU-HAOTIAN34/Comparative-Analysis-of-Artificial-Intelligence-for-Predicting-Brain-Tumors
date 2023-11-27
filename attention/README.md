@@ -1,4 +1,4 @@
-# Attention Module
+# Attention Module (Tensorflow)
 
 ## 1. [CBAM: Convolutional Block Attention Module](https://arxiv.org/abs/1807.06521)  
 Sanghyun Woo, Jongchan Park, Joon-Young Lee, In So Kweon, 2018
