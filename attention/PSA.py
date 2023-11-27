@@ -1,5 +1,7 @@
 from keras.layers import Conv2D, BatchNormalization, ReLU, Concatenate, Add, Lambda, Activation, Multiply
 
+#EPSANet: An Efficient Pyramid Squeeze Attention Block on Convolutional Neural Network
+#Hu Zhang, Keke Zu, Jian Lu, Yuru Zou, Deyu Meng
 
 def PSA_block(inputs, channel=512, reduction=4, S=4, ):
     
@@ -11,8 +13,6 @@ def PSA_block(inputs, channel=512, reduction=4, S=4, ):
     SPC_ = []
     for i in range(S):
         x = Conv2D(c//S, kernel_size=2*(i+1)+1, padding='same')(SPC_out[:, :, :, i, :])
-        x = BatchNormalization()(x)
-        x = ReLU()(x)
         SPC_.append(x)
     SPC_out = tf.stack(SPC_, axis=3)
 
