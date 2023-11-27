@@ -5,71 +5,17 @@ Sanghyun Woo, Jongchan Park, Joon-Young Lee, In So Kweon, 2018
 
 ![](https://github.com/WuHaotian0930/Comparative-Analysis-of-Artificial-Intelligence-for-Predicting-Brain-Tumors/blob/main/attention/img/CBA.png)
 
-```
-sudo apt-get install unzip
-unzip .zip
-```
+## 2. [ARM-Net: Attention-guided residual multiscale CNN for multiclass brain tumor classification using MR images](https://www.sciencedirect.com/science/article/pii/S1746809423008546?via%3Dihub)  
+Tapas Kumar Dutta, Deepak Ranjan Nayak, Yu-Dong Zhang, 2023
 
-```
-pip install keras
-pip install scikit-learn
-pip install seaborn
-pip install opencv-python
-pip install tqdm
-pip install tensorflow==2.9.0
-pip install ipykernel
-conda list tensorflow
-```
+![](https://github.com/WuHaotian0930/Comparative-Analysis-of-Artificial-Intelligence-for-Predicting-Brain-Tumors/blob/main/attention/img/LGA.png)
 
-## 2. Dataset and Preprocessing
+## 3. [EPSANet: An Efficient Pyramid Squeeze Attention Block on Convolutional Neural Network](https://arxiv.org/abs/2105.14447)  
+Hu Zhang, Keke Zu, Jian Lu, Yuru Zou, Deyu Meng, 2022
 
-There are four dataset:  
-[Br35H](https://www.kaggle.com/datasets/ahmedhamada0/brain-tumor-detection?select=no)  
-[SARTAJ's dataset](https://www.kaggle.com/datasets/sartajbhuvaji/brain-tumor-classification-mri)  
-A widely used public multiclassification brain tumor dataset ([MBTD](https://figshare.com/articles/dataset/brain_tumor_dataset/1512427))   
-[Br35H+SARTAJ+figshare](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset)  
+![](https://github.com/WuHaotian0930/Comparative-Analysis-of-Artificial-Intelligence-for-Predicting-Brain-Tumors/blob/main/attention/img/PSA.png)
 
-```
-pip install hdf5storage
-pip install split-folders
-pip install imutils
-```
+## 4. [Squeeze-and-Excitation Networks](https://arxiv.org/abs/1709.01507)
+Jie Hu, Li Shen, Samuel Albanie, Gang Sun, Enhua Wu, 2019
 
-Delete all pred0.jpg file in Br35H+SARTAJ+figshare, SARTAJ_dataset and MBTD.
-
-```
-find /path/to/directory -name 'rew.png' -type f -delete
-```
-
-To use the dataset:
-1. Split training set and testing set by Split_folders.ipynb
-2. Crop brain tumor by Crop_Brain_Contours.ipynb
-3. Augmentation by Data_Augmentation.ipynb 
-
-Download MBTD you can:
-```
-# create a directory
-mkdir brain_tumor_dataset
-cd brain_tumor_dataset
-
-# download the dataset
-wget https://ndownloader.figshare.com/articles/1512427/versions/5
-
-# unzip the dataset and delete the zip
-unzip 5 && rm 5
-
-# concatenate the multiple zipped data in a single zip
-cat brainTumorDataPublic_* > brainTumorDataPublic_temp.zip
-zip -FF brainTumorDataPublic_temp.zip --out data.zip
-
-# remove the temporary files
-rm brainTumorDataPublic_*
-
-# unzip the full archive and delete it 
-unzip data.zip -d data && rm data.zip
-
-# check that "data" contains 3064 files
-ls data | wc -l
-```
-
-Use visualize.ipynb to extract images from .mat file 
+![](https://github.com/WuHaotian0930/Comparative-Analysis-of-Artificial-Intelligence-for-Predicting-Brain-Tumors/blob/main/attention/img/SEA.png)
