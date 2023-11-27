@@ -1,7 +1,7 @@
 from keras.layers import Conv2D, BatchNormalization, ReLU, Concatenate, Add, Lambda, Activation, Multiply
 
-#EPSANet: An Efficient Pyramid Squeeze Attention Block on Convolutional Neural Network
-#Hu Zhang, Keke Zu, Jian Lu, Yuru Zou, Deyu Meng
+# EPSANet: An Efficient Pyramid Squeeze Attention Block on Convolutional Neural Network
+# Hu Zhang, Keke Zu, Jian Lu, Yuru Zou, Deyu Meng, 2022
 
 def PSA_block(inputs, channel=512, reduction=4, S=4, ):
     
