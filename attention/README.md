@@ -1,13 +1,9 @@
-# Comparative Analysis of Artificial Intelligence for Predicting Brain Tumors
+# Attention Module
 
-## 1. Environment Configeration
+## 1. [CBAM: Convolutional Block Attention Module](https://arxiv.org/abs/1807.06521)  
+Sanghyun Woo, Jongchan Park, Joon-Young Lee, In So Kweon, 2018
 
-```
-conda init
-conda create --name tumor -y python=3.8
-conda activate tumor
-python -m pip install --upgrade pip
-```
+![img](https://github.com/WuHaotian0930/Comparative-Analysis-of-Artificial-Intelligence-for-Predicting-Brain-Tumors/blob/main/attention/img/CBA.png)
 
 ```
 sudo apt-get install unzip
