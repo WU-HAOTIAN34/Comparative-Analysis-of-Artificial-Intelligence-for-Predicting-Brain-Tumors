@@ -23,7 +23,7 @@ def self_attention(inp, reduction=8):
     shp = inp.shape
     a = Conv2D(shp[3] // reduction, 1, padding='same')(inp)
     a = Activation('relu')(a)
-    print(a.shape)
+    
     b = Conv2D(shp[3] // reduction, 1, padding='same')(inp)
     b = Activation('relu')(b)
     
@@ -31,7 +31,7 @@ def self_attention(inp, reduction=8):
     c = Activation('relu')(c)
     
     a = Reshape((shp[1] * shp[2], shp[3] // reduction))(a)
-    print(a.shape)
+    
     b = Reshape((shp[1] * shp[2], shp[3] // reduction))(b)
     b = K.permute_dimensions(b, (0, 2, 1))
     c = Reshape((shp[1] * shp[2], shp[3] // reduction))(c)
