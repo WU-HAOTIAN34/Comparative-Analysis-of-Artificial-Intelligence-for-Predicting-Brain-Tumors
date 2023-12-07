@@ -4,9 +4,11 @@ import tensorflow as tf
 from tqdm import tqdm
 import numpy as np
 import itertools 
+from sklearn.utils import shuffle
 import cv2
 import os
-
+import time
+from tensorflow.keras.callbacks import Callback
 
 def load_data(data_path, labels, image_size):
 
@@ -39,8 +41,7 @@ def load_data(data_path, labels, image_size):
     x_train = np.array(x_train) / 255.0 # normalize Images into range 0 to 1.
     x_test = np.array(x_test) / 255.0
 
-    print(x_train.shape)
-    print(x_test.shape)
+    x_train, y_train = shuffle(x_train, y_train, random_state=101)
 
     images = [x_train[i] for i in range(15)]
     fig, axes = plt.subplots(3, 5, figsize = (10, 10))
@@ -50,7 +51,7 @@ def load_data(data_path, labels, image_size):
     plt.tight_layout()
     plt.show()
 
-    
+     
     y_train = tf.keras.utils.to_categorical(y_train) #One Hot Encoding on the labels
     y_test = tf.keras.utils.to_categorical(y_test)
 
@@ -144,3 +145,23 @@ def draw_matrix(label, y_test_new, pred, acc):
     print(classification_report(y_test_new,pred,target_names = label,digits = 4))
     confusion_mtx = confusion_matrix(y_test_new,pred)
     cm = plot_confusion_matrix(confusion_mtx, target_names = label, normalize=False)
+
+
+class TimeHistory(Callback):
+    def on_train_begin(self, logs={}):
+        self.times = []
+        self.train_start_time = time.time()
+
+    def on_epoch_begin(self, epoch, logs={}):
+        self.epoch_start_time = time.time()
+
+    def on_epoch_end(self, epoch, logs={}):
+        epoch_end_time = time.time()
+        elapsed_time = epoch_end_time - self.epoch_start_time
+        self.times.append(elapsed_time)
+        print("Epoch {}: {:.2f} seconds".format(epoch + 1, elapsed_time))
+
+    def on_train_end(self, logs={}):
+        train_end_time = time.time()
+        total_time = train_end_time - self.train_start_time
+        print("Total training time: {:.2f} seconds".format(total_time))
