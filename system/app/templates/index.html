@@ -1,49 +1,69 @@
 <!DOCTYPE html>
-<html>
-    
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
         <title>Brain Tumor</title>
-        <link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet"> 
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700" rel="stylesheet"> 
-        <link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="../static/layui/css/layui.css"/>
         <link rel="stylesheet" href="../static/css/main.css"/>
+        <link rel="shortcut icon" href="../static/images/logo1.png" type="image/x-icon" />
     </head>
-    
-    <header>
-            <nav>
-              <div class="nav-bg"></div>
-              <ul>
-                <li><a href="/"><img src="../static/images/brain_logo.png" height=40px width=40px alt="neuralBlack"/> <p>PTMs Brain Classification System</p></a></li>
-              </ul>
-            </nav>
-    </header>
-    
-    <label class="switch">
-        <input type="checkbox">
-        <span class="slider round"></span>
-    </label>
-    
     <body>
-        <div class="card">
-          <div class="container">
-            <div class="upload-btn-wrapper">
-                <form name='bt_classifier' action='/' method='POST' enctype="multipart/form-data">
-                  <center><button class="btn">Upload an Image</button></center>
-                  <input type="file" name="file" id="bt_image" required/>
-                  <br>
-                  <label>Select the Model : </label>
-                  <select name ="model_choice" required>
-                    <option value = "VGG16">VGG16</option>
-                    <option value = "ResNet50">ResNet50</option>
-                      <option value = "Xception">Xception</option>
-                      <option value = "ARMNet">ARMNet</option>
-                  </select>
-                  </br>
-                  <button type='submit' name='submit' id='sub'>Classify</button>
-                </form>
+        <nav class="layui-bg-green">
+            <div class="nav-bg layui-bg-green"></div>
+            <ul>
+                <li>
+                    <a href="javascript:;">
+                         &nbsp; &nbsp;
+                        <img src="../static/images/logo.png" height=40px width=40px alt="neuralBlack"/>
+                        <p>Brain Tumor Classification System</p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="card " style="height: 32%;">
+            <div class="container layui-btn-primary">
+                <div class="upload-btn-wrapper">
+                    <form name='bt_classifier' action='/' method='POST' enctype="multipart/form-data">
+                        <center><button class="btn" id="upload">Upload an Image</button></center>
+                        <input type="file" name="file" id="bt_image" required/>
+                        <br>
+                        <label>&nbsp; &nbsp;Select the Model : </label>
+                        <select name ="model_choice" required>
+                            <option value = "VGG16">VGG-16</option>
+                            <option value = "ResNet50">ResNet-50</option>
+                            <option value = "Xception">Xception</option>
+                            <option value = "ARMNet">ARM-Net</option>
+                            <option value = "InceptionV3">Inception-V3</option>
+                            <option value = "MFLNet">MFL-Net</option>
+                            <option value = "MobileNetV2">MobileNet-V2</option>
+                            <option value = "DenseNet121">DenseNet-121</option>
+                            <option value = "SqueezeNet">SqueezeNet</option>
+                            <option value = "AlexNet">AlexNet</option>
+                            <option value = "test">test</option>
+                        </select>
+                        <br>
+                        <br>
+                        <button type='submit' name='submit' id='sub'>Classify</button>
+                    </form>
+                </div>
             </div>
-          </div>
+            <br>
+            <img id="preview" style="width: 36%; border-color: transparent; position: absolute; left: 32%;" >
         </div>
+        <script src="../static/layui/layui.js"></script>
+        <script>
+            const uploadInput = document.getElementById('bt_image');
+            const previewImg = document.getElementById('preview');
+            uploadInput.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.addEventListener('load', function() {
+                        previewImg.src = reader.result;
+                    });
+                    reader.readAsDataURL(file);
+                }
+            });
+        </script>
     </body>
 </html>
