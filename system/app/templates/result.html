@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-    
     <head>
         <meta charset="UTF-8">
         <title>Brain Tumor</title>
@@ -8,13 +7,11 @@
         <link rel="stylesheet" href="../static/css/main.css"/>
         <link rel="shortcut icon" href="../static/images/logo1.png" type="image/x-icon" />
     </head>
-    
     <body>
         <nav class="layui-bg-green">
             <div class="nav-bg layui-bg-green"></div>
             <ul>
                 <li>
-
                     <a href="javascript:;">
                          &nbsp; &nbsp;
                         <img src="../static/images/logo.png" height=40px width=40px alt="neuralBlack"/>
@@ -23,15 +20,12 @@
                 </li>
             </ul>
         </nav>
-
-
         <div class="cardpred">
-          <div class="container">
-            <img src="{{ image_file }}" alt="Uploaded Image" height="35%" width="35%">
-            <p>Prediction: {{ result }}</p>
-            <button type="button" id="goHome"><a href="/" style="text-decoration: none; color: white;">Go home</a></button>
-          </div>
+            <div class="container">
+                <img src="{{ image_file }}" alt="Uploaded Image" height="35%" width="35%">
+                <p>Prediction: {{ result }}</p>
+                <button type="button" id="goHome"><a href="/" style="text-decoration: none; color: white;">Go home</a></button>
+            </div>
         </div>
     </body>
-  
 </html>
