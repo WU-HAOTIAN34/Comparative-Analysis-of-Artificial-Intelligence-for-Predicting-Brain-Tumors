@@ -10,6 +10,7 @@ import os
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
+
 def crop_image(image, image2):
     y_min = np.argmax(np.sum(image, axis=1)/image.shape[0] > 10)
     y_max = image.shape[0] - np.argmax(np.flipud(np.sum(image, axis=1)/image.shape[0] > 10))
@@ -94,6 +95,16 @@ def home():
                 model = MFLNet
                 prediction = model.predict(image)
                 MFLNet = None
+            elif model_choice == "AlexNet":
+                AllexNet = load_model(os.path.join(base_dir, '../model', 'AlexNet.h5'))
+                model = AllexNet
+                prediction = model.predict(image)
+                AllexNet = None
+            elif model_choice == "test":
+                test = load_model(os.path.join(base_dir, '../model', 'test.h5'))
+                model = test
+                prediction = model.predict(image)
+                AllexNet = None
             else:
                 DenseNet121 = load_model(os.path.join(base_dir, '../model', 'DenseNet121.h5'))
                 model = DenseNet121
@@ -108,5 +119,3 @@ def home():
             return render_template("result.html", result=result, image_file='../static/test_image/' + file.filename)
 
     return render_template("index.html")
-
-
