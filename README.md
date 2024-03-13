@@ -84,6 +84,8 @@ Use visualize.ipynb to extract images from .mat file
 ## 3. Implement VGG19-TLFT
 
 ```
+sudo apt-get update
+
 apt update && apt install -y libglu1-mesa-dev mesa-utils xterm xauth x11-xkb-utils xfonts-base xkb-data libxtst6 libxv1
 
 export TURBOVNC_VERSION=2.2.5
