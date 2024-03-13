@@ -80,3 +80,54 @@ ls data | wc -l
 ```
 
 Use visualize.ipynb to extract images from .mat file 
+
+## 3. Implement VGG19-TLFT
+
+```
+apt update && apt install -y libglu1-mesa-dev mesa-utils xterm xauth x11-xkb-utils xfonts-base xkb-data libxtst6 libxv1
+
+export TURBOVNC_VERSION=2.2.5
+
+export LIBJPEG_VERSION=2.0.90
+
+wget http://aivc.ks3-cn-beijing.ksyun.com/packages/libjpeg-turbo/libjpeg-turbo-official_${LIBJPEG_VERSION}_amd64.deb
+
+wget http://aivc.ks3-cn-beijing.ksyun.com/packages/turbovnc/turbovnc_${TURBOVNC_VERSION}_amd64.deb
+
+dpkg -i libjpeg-turbo-official_${LIBJPEG_VERSION}_amd64.deb
+
+dpkg -i turbovnc_${TURBOVNC_VERSION}_amd64.deb
+
+rm -rf *.deb
+
+rm -rf /tmp/.X1*
+
+USER=root /opt/TurboVNC/bin/vncserver :1 -desktop X -auth /root/.Xauthority -geometry 1920x1080 -depth 24 -rfbwait 120000 -rfbauth /root/.vnc/passwd -fp /usr/share/fonts/X11/misc/,/usr/share/fonts -rfbport 6006
+
+# Check whether the vncserver process is started. If the VNCServer process exists, it is started
+ps -ef | grep vnc
+```
+
+Download TurboVNC
+Windows: http://aivc.ks3-cn-beijing.ksyun.com/packages/turbovnc/TurboVNC-2.2.5-x64.exe
+
+SSH tunnel: open cmd: ssh -CNg -L 6006:127.0.0.1:6006 root@xxxxxxxxxxx -p xxxxxx
+
+Open VNC, address: 127.0.0.1:6006
+
+```
+# Add environment variable
+export DISPLAY=:1
+```
+
+You can use the following python code for simple verification, if the image is displayed in the local vnc client, the installation and startup process is correct
+```
+import numpy as np
+import cv2
+
+h = 500
+w = 500
+img = 255 * np.ones((h ,w , 3), dtype=np.uint8)
+cv2.imshow("", img)
+cv2.waitKey(0)
+```
