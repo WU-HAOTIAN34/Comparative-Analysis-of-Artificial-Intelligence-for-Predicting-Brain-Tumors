@@ -19,3 +19,8 @@ Hu Zhang, Keke Zu, Jian Lu, Yuru Zou, Deyu Meng, 2022
 Jie Hu, Li Shen, Samuel Albanie, Gang Sun, Enhua Wu, 2019
 
 ![](https://github.com/WuHaotian0930/Comparative-Analysis-of-Artificial-Intelligence-for-Predicting-Brain-Tumors/blob/main/attention/img/SEA.png)
+
+## 5. [CDANET: Channel Split Dual Attention Based CNN for Brain Tumor Classification in MR Images](https://resourcecenter.ieee.org/conferences/icip-2022/spsicip22vid0770)
+Tapas Kumar Dutta, Deepak Ranjan Nayak, 2022
+
+![](https://github.com/WuHaotian0930/Comparative-Analysis-of-Artificial-Intelligence-for-Predicting-Brain-Tumors/blob/main/attention/img/CSDA.png)
