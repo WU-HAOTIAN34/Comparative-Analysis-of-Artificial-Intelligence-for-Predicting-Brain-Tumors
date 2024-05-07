@@ -16,7 +16,7 @@
 .cardpred {
     box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.2);
     transition: 0.3s;
-    height: 35%;
+    height: 50%;
     width: 34%;
     left: 45%;
     top: 68%;
@@ -46,8 +46,8 @@ body{
 
 .container p{
     font-size: 24px;
-    padding-right: 15.5%;
-    padding-top: 20.5%;
+    padding-right: 25%;
+    padding-top: 7%;
     float: right;
 }
 
