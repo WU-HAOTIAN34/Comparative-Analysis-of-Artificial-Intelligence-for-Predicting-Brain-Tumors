@@ -15,6 +15,12 @@ unzip .zip
 ```
 
 ```
+pip install -r requirments.txt
+```
+
+or
+
+```
 pip install keras
 pip install scikit-learn
 pip install seaborn
