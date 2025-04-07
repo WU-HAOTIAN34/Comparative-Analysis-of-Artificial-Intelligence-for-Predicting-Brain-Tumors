@@ -51,10 +51,11 @@ pip install imutils
 Delete all pred0.jpg file in Br35H+SARTAJ+figshare, SARTAJ_dataset and MBTD.
 
 ```
-find /path/to/directory -name 'rew.png' -type f -delete
+find /path/to/directory -name 'pred0.jpg' -type f -delete
 ```
 
 To use the dataset:
+1. Run visualize.ipynb in dataset/figshare_MBTD
 1. Split training set and testing set by Split_folders.ipynb
 2. Crop brain tumor by Crop_Brain_Contours.ipynb
 3. Augmentation by Data_Augmentation.ipynb 
